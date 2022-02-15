@@ -9,6 +9,10 @@ export default function Intoducer({ ptext, etext, pintro, eintro }) {
   useEffect(() => {
     setAudio(new Audio(`https://annachatterbox.herokuapp.com${intro}`));
   }, [intro]);
+  useEffect(() => {
+    const introducerText = document.querySelector(".introducer__text");
+    introducerText.innerHTML = text;
+  }, [text]);
 
   const setPolish = () => {
     const pulseShapes = document.querySelectorAll(".introducer__shape-back");
@@ -51,7 +55,7 @@ export default function Intoducer({ ptext, etext, pintro, eintro }) {
       <div className="introducer__col introducer__col--1">
         <div className="introducer__wrapper">
           <div className="introducer__shape-around"></div>
-          <p className="introducer__text">{text}</p>
+          <p className="introducer__text"></p>
           <div className="introducer__buttons">
             {" "}
             <button
