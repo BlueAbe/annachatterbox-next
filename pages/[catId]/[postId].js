@@ -24,31 +24,29 @@ export default function Post({ post }) {
           <span>{post.attributes.title}</span>
         </h2>
         <section className="post-content"></section>
-        <section className="materials">
-          <h2 className="heading-materials">Materiały</h2>
-          <hr></hr>
-          <div className="materials__links">
-            {materials.map((m) => {
-              return (
-                <Download
-                  key={m.id}
-                  url={`https://annachatterbox.herokuapp.com${m.attributes.url}`}
-                  filename={m.attributes.name}
-                  link={m.attributes.alternativeText}
-                ></Download>
-                // <a
-                //   className="materials__link"
-                //   key={m.id}
-                //   href={`https://annachatterbox.herokuapp.com${m.attributes.url}`}
-                //   download={m.attributes.name}
-                //   target="_blank"
-                // >
-                //   {m.attributes.alternativeText}
-                // </a>
-              );
-            })}
-          </div>
-        </section>
+        {materials ? (
+          <section className="materials">
+            <h2 className="heading-materials">Materiały</h2>
+            <hr></hr>
+            <div className="materials__links">
+              {materials.map((m) => {
+                return (
+                  <Download
+                    key={m.id}
+                    url={m.attributes.url}
+                    filename={m.attributes.name}
+                    link={m.attributes.alternativeText}
+                  ></Download>
+                );
+              })}
+            </div>
+          </section>
+        ) : (
+          <>
+            <p>&nbsp;</p>
+            <hr></hr>
+          </>
+        )}
       </main>
     </>
   );

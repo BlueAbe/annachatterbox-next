@@ -7,7 +7,7 @@ export default function Intoducer({ ptext, etext, pintro, eintro }) {
   const [play, setPlay] = useState(false);
   const [audio, setAudio] = useState(null);
   useEffect(() => {
-    setAudio(new Audio(`https://annachatterbox.herokuapp.com${intro}`));
+    setAudio(new Audio(intro));
   }, [intro]);
   useEffect(() => {
     const introducerText = document.querySelector(".introducer__text");

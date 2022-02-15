@@ -39,7 +39,6 @@ export default function Header() {
       return el.attributes.url;
     });
     const randomFlagsTab = shuffle(flagUrlsTab);
-
     let viewportWidth = window.innerWidth;
     const changeFlagsDetails1 = (i) => {
       const l = randomFlagsTab.length;
@@ -98,7 +97,7 @@ export default function Header() {
             {" "}
             <Image
               className="image"
-              src={`https://annachatterbox.herokuapp.com${el}`}
+              src={el}
               alt="Picture of the author"
               width={120}
               height={60}

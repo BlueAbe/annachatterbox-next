@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["localhost", "annachatterbox.herokuapp.com"],
+    domains: ["localhost", "res.cloudinary.com"],
     formats: ["image/avif", "image/webp"],
   },
 };

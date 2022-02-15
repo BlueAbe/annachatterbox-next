@@ -55,7 +55,7 @@ export default function Home({
                 <div className="image post-intro__img">
                   {" "}
                   <Image
-                    src={`https://annachatterbox.herokuapp.com${p.attributes.cover.data.attributes.url}`}
+                    src={p.attributes.cover.data.attributes.url}
                     width="200px"
                     height="200px"
                     quality={100}
