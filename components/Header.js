@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-export default function Header() {
+export default function Header({ propsFlags }) {
   // STATE
   const [flags, setFlags] = useState([]);
   const [restFlags, setRestFlags] = useState([]);
@@ -28,16 +28,42 @@ export default function Header() {
     return array;
   }
 
-  // GENERATE FLAGS AFTER PAGE LOAD
+  // // GENERATE FLAGS AFTER PAGE LOAD - FROM HEROKU
+  // useEffect(async function () {
+  //   const res = await fetch(
+  //     " https://annachatterbox.herokuapp.com/api/flags?populate=*"
+  //   );
+  //   const strapi = await res.json();
+  //   const flagObjectsTab = strapi.data[0].attributes.pictures.data;
+  //   const flagUrlsTab = flagObjectsTab.map((el) => {
+  //     return el.attributes.url;
+  //   });
+  //   const randomFlagsTab = shuffle(flagUrlsTab);
+  //   let viewportWidth = window.innerWidth;
+  //   const changeFlagsDetails1 = (i) => {
+  //     const l = randomFlagsTab.length;
+  //     const restFlagsTable = randomFlagsTab.slice(0, l - i);
+  //     const sliceRandomFlagsTab = randomFlagsTab.slice(-i);
+  //     setFlags(sliceRandomFlagsTab);
+  //     setRestFlags(restFlagsTable);
+  //   };
+  //   if (viewportWidth > 900) {
+  //     changeFlagsDetails1(50);
+  //   }
+  //   if (viewportWidth <= 900 && viewportWidth > 600) {
+  //     changeFlagsDetails1(40);
+  //   }
+  //   if (viewportWidth <= 600) {
+  //     changeFlagsDetails1(25);
+  //   }
+  // }, []);
+
+  // GENERATE FLAGS AFTER PAGE LOAD - FROM FILES
   useEffect(async function () {
-    const res = await fetch(
-      " https://annachatterbox.herokuapp.com/api/flags?populate=*"
-    );
-    const strapi = await res.json();
-    const flagObjectsTab = strapi.data[0].attributes.pictures.data;
-    const flagUrlsTab = flagObjectsTab.map((el) => {
-      return el.attributes.url;
+    const flagUrlsTab = propsFlags.map((el) => {
+      return `/flags/${el}`;
     });
+    // console.log(flagUrlsTab);
     const randomFlagsTab = shuffle(flagUrlsTab);
     let viewportWidth = window.innerWidth;
     const changeFlagsDetails1 = (i) => {
@@ -71,7 +97,7 @@ export default function Header() {
   const changeFlags = (e) => {
     let viewportWidth = window.innerWidth;
     if (e.target.className === "header__text") {
-      console.log("ok");
+      // console.log("ok");
       router.push("/", undefined, { shallow: true });
       return 0;
     }

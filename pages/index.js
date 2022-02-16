@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Introducer from "../components/Introducer";
 export default function Home({
+  flagsTab,
   posts,
   categories,
   polishText,
@@ -100,8 +101,21 @@ export async function getStaticProps() {
   );
   const strapi4 = await res4.json();
   // console.log(strapi3.data.attributes.intro.data.attributes.url);
+
+  const flagsFolder = "./public/flags";
+  const fs = require("fs");
+  const flagsTab = [];
+  // await fs.readdir(flagsFolder, (err, files) => {
+  //   files.forEach((file) => {
+  //     flagsTab.push(file);
+  //   });
+  // });
+  fs.readdirSync(flagsFolder).forEach((file) => {
+    flagsTab.push(file);
+  });
   return {
     props: {
+      flagsTab,
       posts: strapi1.data,
       categories: strapi2.data,
       polishText: strapi3.data.attributes.text,
