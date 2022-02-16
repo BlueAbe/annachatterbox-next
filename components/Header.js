@@ -29,41 +29,15 @@ export default function Header({ propsFlags }) {
   }
 
   // // GENERATE FLAGS AFTER PAGE LOAD - FROM HEROKU
-  // useEffect(async function () {
-  //   const res = await fetch(
-  //     " https://annachatterbox.herokuapp.com/api/flags?populate=*"
-  //   );
-  //   const strapi = await res.json();
-  //   const flagObjectsTab = strapi.data[0].attributes.pictures.data;
-  //   const flagUrlsTab = flagObjectsTab.map((el) => {
-  //     return el.attributes.url;
-  //   });
-  //   const randomFlagsTab = shuffle(flagUrlsTab);
-  //   let viewportWidth = window.innerWidth;
-  //   const changeFlagsDetails1 = (i) => {
-  //     const l = randomFlagsTab.length;
-  //     const restFlagsTable = randomFlagsTab.slice(0, l - i);
-  //     const sliceRandomFlagsTab = randomFlagsTab.slice(-i);
-  //     setFlags(sliceRandomFlagsTab);
-  //     setRestFlags(restFlagsTable);
-  //   };
-  //   if (viewportWidth > 900) {
-  //     changeFlagsDetails1(50);
-  //   }
-  //   if (viewportWidth <= 900 && viewportWidth > 600) {
-  //     changeFlagsDetails1(40);
-  //   }
-  //   if (viewportWidth <= 600) {
-  //     changeFlagsDetails1(25);
-  //   }
-  // }, []);
-
-  // GENERATE FLAGS AFTER PAGE LOAD - FROM FILES
   useEffect(async function () {
-    const flagUrlsTab = propsFlags.map((el) => {
-      return `/flags/${el}`;
+    const res = await fetch(
+      " https://annachatterbox.herokuapp.com/api/flags?populate=*"
+    );
+    const strapi = await res.json();
+    const flagObjectsTab = strapi.data[0].attributes.pictures.data;
+    const flagUrlsTab = flagObjectsTab.map((el) => {
+      return el.attributes.url;
     });
-    // console.log(flagUrlsTab);
     const randomFlagsTab = shuffle(flagUrlsTab);
     let viewportWidth = window.innerWidth;
     const changeFlagsDetails1 = (i) => {
@@ -83,6 +57,32 @@ export default function Header({ propsFlags }) {
       changeFlagsDetails1(25);
     }
   }, []);
+
+  // GENERATE FLAGS AFTER PAGE LOAD - FROM FILES
+  // useEffect(async function () {
+  //   const flagUrlsTab = propsFlags.map((el) => {
+  //     return `/flags/${el}`;
+  //   });
+  //   // console.log(flagUrlsTab);
+  //   const randomFlagsTab = shuffle(flagUrlsTab);
+  //   let viewportWidth = window.innerWidth;
+  //   const changeFlagsDetails1 = (i) => {
+  //     const l = randomFlagsTab.length;
+  //     const restFlagsTable = randomFlagsTab.slice(0, l - i);
+  //     const sliceRandomFlagsTab = randomFlagsTab.slice(-i);
+  //     setFlags(sliceRandomFlagsTab);
+  //     setRestFlags(restFlagsTable);
+  //   };
+  //   if (viewportWidth > 900) {
+  //     changeFlagsDetails1(50);
+  //   }
+  //   if (viewportWidth <= 900 && viewportWidth > 600) {
+  //     changeFlagsDetails1(40);
+  //   }
+  //   if (viewportWidth <= 600) {
+  //     changeFlagsDetails1(25);
+  //   }
+  // }, []);
 
   // CHANGE FLAGS AFTER CLICK
   const changeFlagsDetails2 = (i) => {
