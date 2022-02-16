@@ -102,7 +102,7 @@ export async function getStaticProps() {
   const strapi4 = await res4.json();
   // console.log(strapi3.data.attributes.intro.data.attributes.url);
 
-  const flagsFolder = "/public/flags";
+  const flagsFolder = "/flags";
   const fs = require("fs");
   const flagsTab = [];
   fs.readdirSync(flagsFolder).forEach((file) => {
