@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
       <div className="content">
         <div className="u-wrapper">
           <div className="container">
-            <Header className="header" propsFlags={pageProps.flagsTab} />
+            {/* <Header className="header" propsFlags={pageProps.flagsTab} /> */}
           </div>
         </div>
         <div className="container container--shadow container--stretch">
