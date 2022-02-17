@@ -31,6 +31,9 @@
       margin-top: 5rem;
     }
   }
+  &__foto-wrapper {
+    overflow: hidden;
+  }
   &__shape-wrapper {
     position: absolute;
     left: -9rem;
@@ -117,6 +120,9 @@
   &__foto {
     display: block;
     width: 100%;
+    @include respond(phone) {
+      transform: scale(1.5);
+    }
   }
   &__text {
     text-align: justify;

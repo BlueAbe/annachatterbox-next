@@ -78,11 +78,14 @@ export default function Intoducer({ ptext, etext, pintro, eintro }) {
             <figure className="introducer__shape-back"></figure>
             <figure className="introducer__shape-back"></figure>
           </div>
-          <img
-            className="introducer__foto"
-            src="/ana5.jpg"
-            alt="Picture of the author"
-          />
+          <div className="introducer__foto-wrapper">
+            {" "}
+            <img
+              className="introducer__foto"
+              src="/ana5.jpg"
+              alt="Picture of the author"
+            />
+          </div>
         </div>
       </div>
     </div>
