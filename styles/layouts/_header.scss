@@ -31,7 +31,11 @@
       background-color: rgba(0, 0, 0, 0.45);
       z-index: 1;
       box-shadow: inset 28px 40px 80px #000, inset -28px -40px 80px #000;
+      @include respond(phone) {
+        box-shadow: inset 18px 30px 60px #000, inset -18px -30px 60px #000;
+      }
     }
+
     &--2 {
       background-color: #000;
       z-index: 3;

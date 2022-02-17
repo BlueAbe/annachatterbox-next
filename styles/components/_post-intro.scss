@@ -21,6 +21,9 @@
       text-transform: uppercase;
       font-weight: 400;
       font-size: 3.5rem;
+      @include respond(phone) {
+        font-size: 3rem;
+      }
     }
   }
   &__dsc {
@@ -33,12 +36,13 @@
   &__date {
     font-size: 2.2rem;
     display: inline-block;
-    // color: bisque;
-    // background-color: #2b65bb;
     color: #e03616;
     border: 1px solid;
     padding: 0.5rem;
     white-space: nowrap;
+    @include respond(phone) {
+      display: none !important;
+    }
   }
   &__img {
     flex-shrink: 0;
