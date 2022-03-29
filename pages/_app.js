@@ -8,8 +8,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <div className="content">
         <div className="u-wrapper">
-          <div className="container">
-            {/* <Header className="header" propsFlags={pageProps.flagsTab} /> */}
+          <div className="container container--header">
             <Header className="header" />
           </div>
         </div>
