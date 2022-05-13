@@ -12,7 +12,11 @@ export default function Notfound() {
 
 export async function getStaticProps() {
   const res2 = await fetch(
-    " https://annachatterbox.herokuapp.com/api/categories/"
+    `${
+      process.env.DEVELOPMENT_BACKEND_HOST
+        ? process.env.DEVELOPMENT_BACKEND_HOST
+        : process.env.PRODUCTION_BACKEND_HOST
+    }/api/categories/`
   );
   const strapi2 = await res2.json();
   return {

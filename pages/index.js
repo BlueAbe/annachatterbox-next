@@ -3,9 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Introducer from "../components/Introducer";
 export default function Home({
-  flagsTab,
   posts,
-  categories,
   polishText,
   englishText,
   polishIntro,
@@ -85,30 +83,37 @@ export default function Home({
 
 export async function getStaticProps() {
   const res1 = await fetch(
-    " https://annachatterbox.herokuapp.com/api/articles?sort[0]=commit:desc&pagination[page]=1&pagination[pageSize]=5&populate=*"
+    `${
+      process.env.DEVELOPMENT_BACKEND_HOST
+        ? process.env.DEVELOPMENT_BACKEND_HOST
+        : process.env.PRODUCTION_BACKEND_HOST
+    }/api/articles?sort[0]=commit:desc&pagination[page]=1&pagination[pageSize]=5&populate=*`
   );
   const res2 = await fetch(
-    " https://annachatterbox.herokuapp.com/api/categories/"
+    `${
+      process.env.DEVELOPMENT_BACKEND_HOST
+        ? process.env.DEVELOPMENT_BACKEND_HOST
+        : process.env.PRODUCTION_BACKEND_HOST
+    }/api/categories/`
   );
   const strapi1 = await res1.json();
   const strapi2 = await res2.json();
   const res3 = await fetch(
-    "https://annachatterbox.herokuapp.com/api/polish-introducer?populate=*"
+    `${
+      process.env.DEVELOPMENT_BACKEND_HOST
+        ? process.env.DEVELOPMENT_BACKEND_HOST
+        : process.env.PRODUCTION_BACKEND_HOST
+    }/api/polish-introducer?populate=*`
   );
   const strapi3 = await res3.json();
   const res4 = await fetch(
-    "https://annachatterbox.herokuapp.com/api/english-introducer?populate=*"
+    `${
+      process.env.DEVELOPMENT_BACKEND_HOST
+        ? process.env.DEVELOPMENT_BACKEND_HOST
+        : process.env.PRODUCTION_BACKEND_HOST
+    }/api/english-introducer?populate=*`
   );
   const strapi4 = await res4.json();
-  // console.log(strapi3.data.attributes.intro.data.attributes.url);
-
-  // const flagsFolder = "./public/flags";
-  // const fs = require("fs");
-  // const flagsTab = [];
-  // fs.readdirSync(flagsFolder).forEach((file) => {
-  //   flagsTab.push(file);
-  // });
-  // console.log(flagsTab);
   return {
     props: {
       posts: strapi1.data,

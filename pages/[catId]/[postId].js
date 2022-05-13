@@ -54,7 +54,11 @@ export default function Post({ post }) {
 
 export async function getStaticPaths() {
   const res = await fetch(
-    "https://annachatterbox.herokuapp.com/api/articles?populate[0]=category"
+    `${
+      process.env.DEVELOPMENT_BACKEND_HOST
+        ? process.env.DEVELOPMENT_BACKEND_HOST
+        : process.env.PRODUCTION_BACKEND_HOST
+    }/api/articles?populate[0]=category`
   );
   const strapi = await res.json();
 
@@ -75,11 +79,19 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
   const res = await fetch(
-    `https://annachatterbox.herokuapp.com/api/articles?filters[slug][$eq]=${params.postId}&populate=*`
+    `${
+      process.env.DEVELOPMENT_BACKEND_HOST
+        ? process.env.DEVELOPMENT_BACKEND_HOST
+        : process.env.PRODUCTION_BACKEND_HOST
+    }/api/articles?filters[slug][$eq]=${params.postId}&populate=*`
   );
   const strapi = await res.json();
   const res2 = await fetch(
-    " https://annachatterbox.herokuapp.com/api/categories/"
+    `${
+      process.env.DEVELOPMENT_BACKEND_HOST
+        ? process.env.DEVELOPMENT_BACKEND_HOST
+        : process.env.PRODUCTION_BACKEND_HOST
+    }/api/categories/`
   );
   const strapi2 = await res2.json();
   return {
