@@ -123,6 +123,6 @@ export async function getStaticProps() {
       polishIntro: strapi3.data.attributes.intro.data.attributes.url,
       englishIntro: strapi4.data.attributes.intro.data.attributes.url,
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 }

@@ -99,6 +99,6 @@ export async function getStaticProps(context) {
       post: strapi.data[0],
       categories: strapi2.data,
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 }
