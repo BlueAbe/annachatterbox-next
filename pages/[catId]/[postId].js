@@ -100,16 +100,18 @@ export async function getStaticProps(context) {
   //oembed
   let sourceStr = strapi.data[0].attributes.content;
   const ombedLinks = sourceStr.match(/<oembed [^>]+>(.*?)<\/oembed>/g);
-  const ombedLinks2 = ombedLinks.map((el) => el.slice(13, -12));
-  const iframes = [];
-  for (const link of ombedLinks2) {
-    const iframe = await extract(link, { maxwidth: 1000, maxheight: 500 });
-    iframes.push(iframe.html);
+  if (ombedLinks) {
+    const ombedLinks2 = ombedLinks.map((el) => el.slice(13, -12));
+    const iframes = [];
+    for (const link of ombedLinks2) {
+      const iframe = await extract(link, { maxwidth: 1000, maxheight: 500 });
+      iframes.push(iframe.html);
+    }
+    for (const ombed of ombedLinks) {
+      sourceStr = sourceStr.replace(ombed, iframes[ombedLinks.indexOf(ombed)]);
+    }
+    strapi.data[0].attributes.content = sourceStr;
   }
-  for (const ombed of ombedLinks) {
-    sourceStr = sourceStr.replace(ombed, iframes[ombedLinks.indexOf(ombed)]);
-  }
-  strapi.data[0].attributes.content = sourceStr;
 
   return {
     props: {
