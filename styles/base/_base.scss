@@ -99,4 +99,13 @@ h6 {
 }
 .media {
   text-align: center;
+  iframe {
+    width: 100%;
+    @include respond(tab-port) {
+      height: 400px;
+    }
+    @include respond(phone) {
+      height: 350px;
+    }
+  }
 }
