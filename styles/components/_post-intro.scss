@@ -16,12 +16,16 @@
   &__title {
     flex-grow: 1;
     padding-right: 5rem;
+    @include respond(phone) {
+      padding-right: 0rem;
+    }
     h2 {
       color: #e03616;
       text-decoration: none;
       font-weight: 400;
       font-size: 3.5rem;
       display: flex;
+      justify-content: space-between;
       @include respond(phone) {
         font-size: 3rem;
       }
@@ -36,12 +40,15 @@
     color: #fff;
     padding: 0.2rem 0.8rem;
     font-family: "Amiri";
-    // transform: translateX(-30%) translateY(-50%) rotate(370deg);
     line-height: 1.5;
     font-weight: 600;
     cursor: auto;
     align-self: center;
     margin-left: 1rem;
+    @include respond(phone) {
+      transform: rotate(370deg);
+      font-size: 2.5rem;
+    }
   }
   &__level-button--easy {
     background-color: green;
