@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import fetchData from "../../functions/fetchData";
 export default function Category({ posts }) {
   return (
     <>
@@ -23,7 +24,16 @@ export default function Category({ posts }) {
                     href={`/${p.attributes.category.data.attributes.name}/${p.attributes.slug}`}
                   >
                     <a>
-                      <h2>{p.attributes.title}</h2>
+                      <h2>
+                        {p.attributes.title}
+                        <span
+                          className={`post-intro__level-button post-intro__level-button--${
+                            p.attributes.level.data !== null
+                              ? p.attributes.level.data.attributes.value
+                              : "none"
+                          }`}
+                        ></span>
+                      </h2>
                     </a>
                   </Link>
                 </div>
@@ -64,13 +74,7 @@ export default function Category({ posts }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(
-    `${
-      process.env.DEVELOPMENT_BACKEND_HOST
-        ? process.env.DEVELOPMENT_BACKEND_HOST
-        : process.env.PRODUCTION_BACKEND_HOST
-    }/api/categories/`
-  );
+  const res = await fetchData(`/api/categories/`);
   const strapi = await res.json();
   const paths = strapi.data.map((c) => {
     return {
@@ -87,23 +91,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { params } = context;
-  const res1 = await fetch(
-    `${
-      process.env.DEVELOPMENT_BACKEND_HOST
-        ? process.env.DEVELOPMENT_BACKEND_HOST
-        : process.env.PRODUCTION_BACKEND_HOST
-    }/api/articles?filters[category][name][$eq]=${
-      params.catId
-    }&populate=*&sort[0]=commit:desc`
+  const res1 = await fetchData(
+    `/api/articles?filters[category][name][$eq]=${params.catId}&populate=*&sort[0]=commit:desc`
   );
   const strapi1 = await res1.json();
-  const res2 = await fetch(
-    `${
-      process.env.DEVELOPMENT_BACKEND_HOST
-        ? process.env.DEVELOPMENT_BACKEND_HOST
-        : process.env.PRODUCTION_BACKEND_HOST
-    }/api/categories/`
-  );
+  const res2 = await fetchData(`/api/categories/`);
   const strapi2 = await res2.json();
   return {
     props: {

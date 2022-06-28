@@ -2,7 +2,10 @@ import React from "react";
 import Head from "next/head";
 import { useEffect } from "react";
 import Download from "../../components/Downolad";
-import { extract } from "oembed-parser";
+import fetchData from "../../functions/fetchData";
+import ombedParser from "../../functions/ombedParser";
+import translatorParser from "../../functions/translatorParser";
+// import { extract } from "oembed-parser";
 
 export default function Post({ post }) {
   const materials = post.attributes.materials.data;
@@ -55,13 +58,7 @@ export default function Post({ post }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(
-    `${
-      process.env.DEVELOPMENT_BACKEND_HOST
-        ? process.env.DEVELOPMENT_BACKEND_HOST
-        : process.env.PRODUCTION_BACKEND_HOST
-    }/api/articles?populate[0]=category`
-  );
+  const res = await fetchData(`/api/articles?populate[0]=category`);
   const strapi = await res.json();
 
   const paths = strapi.data.map((p) => {
@@ -80,39 +77,21 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { params } = context;
-  const res = await fetch(
-    `${
-      process.env.DEVELOPMENT_BACKEND_HOST
-        ? process.env.DEVELOPMENT_BACKEND_HOST
-        : process.env.PRODUCTION_BACKEND_HOST
-    }/api/articles?filters[slug][$eq]=${params.postId}&populate=*`
+  const res = await fetchData(
+    `/api/articles?filters[slug][$eq]=${params.postId}&populate=*`
   );
   const strapi = await res.json();
-  const res2 = await fetch(
-    `${
-      process.env.DEVELOPMENT_BACKEND_HOST
-        ? process.env.DEVELOPMENT_BACKEND_HOST
-        : process.env.PRODUCTION_BACKEND_HOST
-    }/api/categories/`
-  );
+  const res2 = await fetchData(`/api/categories/`);
   const strapi2 = await res2.json();
 
   //oembed
-  let sourceStr = strapi.data[0].attributes.content;
-  const ombedLinks = sourceStr.match(/<oembed [^>]+>(.*?)<\/oembed>/g);
-  if (ombedLinks) {
-    const ombedLinks2 = ombedLinks.map((el) => el.slice(13, -12));
-    const iframes = [];
-    for (const link of ombedLinks2) {
-      const iframe = await extract(link, { maxwidth: 1000, maxheight: 500 });
-      iframes.push(iframe.html);
-    }
-    for (const ombed of ombedLinks) {
-      sourceStr = sourceStr.replace(ombed, iframes[ombedLinks.indexOf(ombed)]);
-    }
-    strapi.data[0].attributes.content = sourceStr;
-  }
-
+  strapi.data[0].attributes.content = await ombedParser(
+    strapi.data[0].attributes.content
+  );
+  //word translator
+  strapi.data[0].attributes.content = await translatorParser(
+    strapi.data[0].attributes.content
+  );
   return {
     props: {
       post: strapi.data[0],

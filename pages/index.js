@@ -39,8 +39,20 @@ export default function Home({
                   >
                     <a>
                       <h2>
-                        {p.attributes.title} -{" "}
-                        {p.attributes.category.data.attributes.name}
+                        <span>
+                          {" "}
+                          {p.attributes.title}{" "}
+                          <span className="post-intro__catid">
+                            | {p.attributes.category.data.attributes.name}
+                          </span>
+                        </span>
+                        <span
+                          className={`post-intro__level-button post-intro__level-button--${
+                            p.attributes.level.data !== null
+                              ? p.attributes.level.data.attributes.value
+                              : "none"
+                          }`}
+                        ></span>
                       </h2>
                     </a>
                   </Link>
