@@ -36,11 +36,12 @@
     color: #fff;
     padding: 0.2rem 0.8rem;
     font-family: "Amiri";
-    transform: translateX(-30%) translateY(-50%) rotate(370deg);
+    // transform: translateX(-30%) translateY(-50%) rotate(370deg);
     line-height: 1.5;
     font-weight: 600;
     cursor: auto;
-    align-self: flex-start;
+    align-self: center;
+    margin-left: 1rem;
   }
   &__level-button--easy {
     background-color: green;
