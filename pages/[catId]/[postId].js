@@ -89,7 +89,7 @@ export async function getStaticProps(context) {
     strapi.data[0].attributes.content
   );
   //word translator
-  strapi.data[0].attributes.content = await translatorParser(
+  strapi.data[0].attributes.content = translatorParser(
     strapi.data[0].attributes.content
   );
   return {
