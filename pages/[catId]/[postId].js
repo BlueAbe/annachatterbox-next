@@ -64,7 +64,7 @@ export async function getStaticPaths() {
   const paths = strapi.data.map((p) => {
     return {
       params: {
-        catId: `${p.attributes.category.data.attributes.name}`,
+        catId: `${p.attributes.category.data.attributes.slug}`,
         postId: `${p.attributes.slug}`,
       },
     };

@@ -1,8 +1,3 @@
-// import React from "react";
-
-// export default function Footer() {
-//   return <footer>Wykonaie Andrzej Jaworski</footer>;
-// }
 import React from "react";
 export default function Footer() {
   //RENDER COMPONENT

@@ -21,7 +21,7 @@ export default function Category({ posts }) {
               <div className="post-intro__header">
                 <div className="post-intro__title">
                   <Link
-                    href={`/${p.attributes.category.data.attributes.name}/${p.attributes.slug}`}
+                    href={`/${p.attributes.category.data.attributes.slug}/${p.attributes.slug}`}
                   >
                     <a>
                       <h2>
@@ -56,9 +56,9 @@ export default function Category({ posts }) {
                   {" "}
                   <p>{p.attributes.description}</p>
                   <Link
-                    href={`/${p.attributes.category.data.attributes.name}/${p.attributes.slug}`}
+                    href={`/${p.attributes.category.data.attributes.slug}/${p.attributes.slug}`}
                   >
-                    <a className="post-intro__more">
+                    <a className="standard-btn">
                       <span>Czytaj dalej</span>
                     </a>
                   </Link>
@@ -79,7 +79,7 @@ export async function getStaticPaths() {
   const paths = strapi.data.map((c) => {
     return {
       params: {
-        catId: `${c.attributes.name}`,
+        catId: `${c.attributes.slug}`,
       },
     };
   });
@@ -92,7 +92,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
   const res1 = await fetchData(
-    `/api/articles?filters[category][name][$eq]=${params.catId}&populate=*&sort[0]=commit:desc`
+    `/api/articles?filters[category][slug][$eq]=${params.catId}&populate=*&sort[0]=commit:desc`
   );
   const strapi1 = await res1.json();
   const res2 = await fetchData(`/api/categories/`);

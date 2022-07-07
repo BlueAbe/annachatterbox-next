@@ -1,5 +1,5 @@
 import styles from "../styles/index.scss";
-
+import Script from "next/script";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
@@ -22,6 +22,11 @@ function MyApp({ Component, pageProps }) {
           <Footer />
         </div>
       </div>
+      <Script
+        src="https://unpkg.com/axios/dist/axios.min.js"
+        strategy="beforeInteractive"
+      ></Script>
+      <Script src="/js/axios.js" />
     </>
   );
 }

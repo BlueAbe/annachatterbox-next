@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Introducer from "../components/Introducer";
+import Newsletter from "../components/Newsletter";
 export default function Home({
   posts,
   polishText,
@@ -35,7 +36,7 @@ export default function Home({
               <div className="post-intro__header">
                 <div className="post-intro__title">
                   <Link
-                    href={`/${p.attributes.category.data.attributes.name}/${p.attributes.slug}`}
+                    href={`/${p.attributes.category.data.attributes.slug}/${p.attributes.slug}`}
                   >
                     <a>
                       <h2>
@@ -76,9 +77,9 @@ export default function Home({
                   {" "}
                   <p>{p.attributes.description}</p>
                   <Link
-                    href={`/${p.attributes.category.data.attributes.name}/${p.attributes.slug}`}
+                    href={`/${p.attributes.category.data.attributes.slug}/${p.attributes.slug}`}
                   >
-                    <a className="post-intro__more">
+                    <a className="standard-btn">
                       <span>Czytaj dalej</span>
                     </a>
                   </Link>
@@ -88,6 +89,7 @@ export default function Home({
             </div>
           );
         })}
+        <Newsletter></Newsletter>
       </main>
     </>
   );

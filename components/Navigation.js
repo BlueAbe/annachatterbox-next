@@ -7,7 +7,7 @@ export default function Navigation(props) {
         {props.props.map((el) => {
           return (
             <li className="navigation__item" key={el.id}>
-              <Link href={`/${el.attributes.name}`}>
+              <Link href={`/${el.attributes.slug}`}>
                 <a className="navigation__link">{`${el.attributes.name}`}</a>
               </Link>
             </li>
