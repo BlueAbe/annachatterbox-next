@@ -1,4 +1,4 @@
-export default function ombedParser(string) {
+export default function translatorParser(string) {
   const words = string.match(/<mark [^>]+>(.*?)<\/mark>/g);
   if (words) {
     const buttons = [];
@@ -13,7 +13,9 @@ export default function ombedParser(string) {
       // console.log(plWord);
       buttons[
         words.indexOf(word)
-      ] = `<span class="translate-btn translate-btn--${color}" data-front="${engWord}" data-back="${plWord}">${plWord}</span>`;
+      ] = `<span class="translate-btn translate-btn--${color}" data-front="${engWord}" data-back="${plWord}">${
+        engWord.length > plWord.length ? engWord : plWord
+      }</span>`;
     }
     for (const word of words) {
       string = string.replace(word, buttons[words.indexOf(word)]);
