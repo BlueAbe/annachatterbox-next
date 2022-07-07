@@ -6,7 +6,11 @@ const buttonText = document.querySelector(".button__text");
 // type is either 'password' or 'data'
 const updateSettings = async (data) => {
   try {
-    const url = "http://localhost:1337/api/newsletters";
+    const url = `${
+      process.env.DEVELOPMENT_BACKEND_HOST
+        ? process.env.DEVELOPMENT_BACKEND_HOST
+        : process.env.PRODUCTION_BACKEND_HOST
+    }/api/newsletters`;
     buttonText.innerHTML = "Going...";
     const res = await axios.post(url, data);
     if (res.status === 200) {
