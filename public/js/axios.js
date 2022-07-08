@@ -14,6 +14,8 @@ const updateSettings = async (data) => {
       console.log("success");
       buttonText.innerHTML = "You are in !";
     }
+    console.log(process.env.MAIL_USER);
+    console.log(process.env.MAIL_PASS);
   } catch (err) {
     console.log(err.response.data.error.message);
     buttonText.innerHTML = "You are out";
