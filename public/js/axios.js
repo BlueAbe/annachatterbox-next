@@ -6,6 +6,8 @@ const buttonText = document.querySelector(".button__text");
 // type is either 'password' or 'data'
 const updateSettings = async (data) => {
   console.log(data);
+  console.log(process.env.MAIL_USER);
+  console.log(process.env.MAIL_PASS);
   try {
     const url = "https://annachatterbox.herokuapp.com/api/newsletters";
     buttonText.innerHTML = "Going...";
@@ -14,13 +16,11 @@ const updateSettings = async (data) => {
       console.log("success");
       buttonText.innerHTML = "You are in !";
     }
-    console.log(process.env.MAIL_USER);
-    console.log(process.env.MAIL_PASS);
   } catch (err) {
-    console.log(err.response.data.error.message);
+    console.log(err);
     buttonText.innerHTML = "You are out";
-    if (err.response.data.error.message == "This attribute must be unique")
-      buttonText.innerHTML = "It's Ready";
+    // if (err.response.data.error.message == "This attribute must be unique")
+    //   buttonText.innerHTML = "It's Ready";
   }
 };
 if (dataForm) {
