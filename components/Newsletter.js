@@ -5,7 +5,8 @@ export default function Newsletter() {
     <div className="newsletter">
       <p>
         Podobają Ci się moje treści? Zapisz się do mojego newslettera i bądź na
-        bieżąco !
+        bieżąco ! Uwaga po zapisaniu się do newslettera sprawdź pocztę, jeśli
+        nie otrzymałeś wiadomości sprawdź spam.
       </p>
       <form
         className="newsletter__form"
