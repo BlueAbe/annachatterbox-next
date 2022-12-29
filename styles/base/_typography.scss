@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=Roboto+Serif:wght@100&family=Satisfy&display=swap");
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: $default-font-size;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-black;
+}
+
+.heading-recent-posts {
+  color: #e03616;
+  text-transform: uppercase;
+  font-size: 5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 5rem 0 0 0;
+  span {
+    color: bisque;
+    display: inline-block;
+    box-shadow: 0 1.5rem 2rem black;
+    margin-right: -1rem;
+  }
+  .span-1 {
+    background-color: rgb(111, 207, 91);
+    transform: rotate(352deg);
+  }
+  .span-2 {
+    background-color: rgb(236, 204, 59);
+    transform: rotate(5deg);
+  }
+  .span-3 {
+    background-color: rgb(187, 118, 153);
+    transform: rotate(350deg);
+  }
+  .span-4 {
+    background-color: rgb(43, 101, 187);
+    transform: rotate(4deg);
+  }
+
+  @include respond(tab-port) {
+    font-size: 4rem;
+  }
+}
+.heading-category {
+  text-align: center;
+  font-size: 5rem;
+  margin-bottom: -10rem;
+  margin-top: 2rem;
+  span {
+    color: #7ed56f;
+    box-shadow: 0 1rem 2rem rgb(17 17 17 / 40%);
+    transform: rotate(355deg) scale(1.2);
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  @include respond(phone) {
+    margin-bottom: 10rem;
+    margin-top: 0rem;
+  }
+  @include respond(phone) {
+    font-size: 4rem;
+  }
+}
+
+.heading-post {
+  text-align: center;
+  font-size: 5rem;
+  margin-bottom: 10rem;
+  margin-top: -10rem;
+  span {
+    color: #7ed56f;
+    box-shadow: 0 1rem 2rem rgb(17 17 17 / 40%);
+    transform: rotate(357deg) scale(1.2);
+    display: inline-block;
+    font-weight: 400;
+    padding: 0 1rem;
+  }
+
+  @include respond(phone) {
+    margin: 0 0 8rem 0;
+    font-size: 4rem;
+  }
+}
+
+.heading-materials {
+  color: #e03616;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 3.5rem;
+  margin-top: 3rem;
+}
+p {
+  font-family: "Amiri", serif;
+  font-size: $default-font-size;
+  @include respond(phone) {
+    font-size: 2.5rem;
+  }
+  // &:not(:last-child) {
+  //   margin-bottom: 3rem;
+  // }
+}

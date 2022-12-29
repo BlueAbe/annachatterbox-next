@@ -1,0 +1,20 @@
+.materials {
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__link {
+    text-decoration: none;
+    margin: 1rem 0;
+    cursor: pointer;
+    color: #551a8b;
+    transition: all 0.2s;
+  }
+  &__link:hover {
+    color: #7ed56f;
+    box-shadow: 0 1rem 2rem rgb(17 17 17 / 40%);
+    transform: rotate(5deg) scale(1.2);
+    z-index: 3;
+  }
+}

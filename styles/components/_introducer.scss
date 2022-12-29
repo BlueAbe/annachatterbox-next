@@ -1,0 +1,200 @@
+.introducer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5rem;
+  @include respond(tab-port) {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 0 10rem;
+    margin-bottom: 10rem;
+  }
+  @include respond(phone) {
+    padding: 0 5rem;
+    margin-bottom: 10rem;
+  }
+  &__col {
+    width: 48%;
+    @include respond(tab-port) {
+      width: 100%;
+    }
+  }
+  &__col--2 {
+    @include respond(tab-port) {
+      width: 100%;
+    }
+    @include respond(phone) {
+      width: 100%;
+    }
+  }
+  &__col--1 {
+    @include respond(tab-port) {
+      margin-top: 5rem;
+    }
+  }
+  &__foto-wrapper {
+    overflow: hidden;
+  }
+  &__shape-wrapper {
+    position: absolute;
+    left: -9rem;
+    top: -4rem;
+    width: 20rem;
+    height: 20rem;
+    @include respond(phone) {
+      left: -4rem;
+      top: -5rem;
+      width: 15rem;
+      height: 15rem;
+    }
+  }
+  &__shape {
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    width: 20rem;
+    height: 20rem;
+    background-color: #ff5b00;
+    shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    overflow: hidden;
+    display: block;
+    @include respond(phone) {
+      width: 15rem;
+      height: 15rem;
+    }
+  }
+  &__shape-back {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: #ff5b00;
+    shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    overflow: hidden;
+    display: block;
+    opacity: 0.7;
+
+    &--1 {
+      width: 20rem;
+      height: 20rem;
+      animation: pulsing 2s ease-in-out infinite;
+      @include respond(phone) {
+        animation: pulsing-phone 2s ease-in-out infinite;
+      }
+    }
+    &--2 {
+      width: 20rem;
+      height: 20rem;
+      animation: pulsing 2s ease-out 0.8s infinite;
+      @include respond(phone) {
+        animation: pulsing-phone 2s ease-out 0.8s infinite;
+      }
+    }
+    @include respond(phone) {
+      width: 15rem;
+      height: 15rem;
+    }
+  }
+  &__caption {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-48%, -44%) rotate(-23deg);
+    color: #fff;
+    font-size: 12.5rem;
+    text-align: center;
+    font-family: "Amiri", serif;
+    letter-spacing: 5px;
+    @include respond(phone) {
+      font-size: 9rem;
+    }
+  }
+  &__wrapper {
+    position: relative;
+  }
+  &__foto {
+    display: block;
+    width: 100%;
+    @include respond(phone) {
+      transform: scale(1.5);
+    }
+  }
+  &__text {
+    text-align: justify;
+  }
+  &__shape-around {
+    shape-outside: ellipse(100px 100px at 120% 30%);
+    width: 20rem;
+    height: 20rem;
+    float: right;
+    @include respond(tab-port) {
+      display: none;
+    }
+  }
+  &__buttons {
+    min-width: 25rem;
+    text-align: center;
+    position: absolute;
+    bottom: -12rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__button {
+    width: 10rem;
+    height: 5rem;
+    cursor: pointer;
+    border: 1px solid #fff;
+    box-shadow: 0 1.5rem 2rem rgb(0 0 0);
+    transition: 0.5s;
+    background-position: center;
+    place-items: baseline;
+    &:hover {
+      transform: translateY(-0.3rem);
+    }
+    &--polish {
+      background-image: url("../../public/tn_pl-flag.gif");
+      margin-right: 1rem;
+    }
+    &--british {
+      background-image: url("../../public/tn_uk-flag.gif");
+    }
+  }
+}
+@keyframes pulsing {
+  0% {
+    width: 20rem;
+    height: 20rem;
+  }
+  60% {
+    width: 28rem;
+    height: 28rem;
+    opacity: 0.05;
+  }
+  100% {
+    width: 28rem;
+    height: 28rem;
+    opacity: 0;
+  }
+}
+
+@keyframes pulsing-phone {
+  0% {
+    width: 15rem;
+    height: 15rem;
+  }
+  60% {
+    width: 22rem;
+    height: 22rem;
+    opacity: 0.05;
+  }
+  100% {
+    width: 22rem;
+    height: 22rem;
+    opacity: 0;
+  }
+}

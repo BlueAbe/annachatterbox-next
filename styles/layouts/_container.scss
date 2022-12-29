@@ -1,0 +1,21 @@
+.container {
+  background-color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &--shadow {
+    box-shadow: 0px 0px 23px 11px #f35b04;
+  }
+  &--header {
+    background-color: #000;
+  }
+  &--stretch {
+    min-height: calc(100vh - 360px);
+    @include respond(tab-land) {
+      min-height: calc(100vh - 285px);
+    }
+    @include respond(tab-port) {
+      min-height: calc(100vh - 245px);
+    }
+  }
+}

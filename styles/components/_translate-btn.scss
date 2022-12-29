@@ -1,0 +1,69 @@
+$btn-speed: 0.5s;
+
+.translate-btn {
+  &,
+  &:link,
+  &:visited {
+    opacity: 1;
+    outline: 0;
+    padding: 0 10px;
+    color: transparent;
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: "Amiri";
+  }
+
+  &:hover {
+    &:after {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+
+    &:before {
+      opacity: 0;
+      transform: translateY(50%) translateX(-50%) rotateX(90deg);
+    }
+  }
+
+  &:after {
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    color: #fff;
+    display: block;
+    transition: $btn-speed;
+    position: absolute;
+    content: attr(data-back);
+    transform: translateY(-50%) rotateX(90deg);
+  }
+
+  &:before {
+    white-space: nowrap;
+    top: 0;
+    left: 50%;
+    opacity: 1;
+    color: #fff;
+    display: block;
+    transition: $btn-speed;
+    position: absolute;
+    content: attr(data-front);
+    transform: translateY(0) translateX(-50%) rotateX(0);
+  }
+}
+.translate-btn--green {
+  background-color: green;
+}
+.translate-btn--pink {
+  background-color: red;
+}
+.translate-btn--blue {
+  background-color: blue;
+}
+.translate-btn--yellow {
+  background-color: #ff5b00;
+}

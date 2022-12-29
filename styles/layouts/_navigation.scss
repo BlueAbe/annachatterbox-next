@@ -1,0 +1,43 @@
+.navigation {
+  padding-bottom: 5rem;
+  &__list {
+    list-style: none;
+    text-align: center;
+  }
+  &__item {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+  &__link {
+    &:link,
+    &:visited {
+      color: #e03616;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: all 0.2s;
+      font-size: 3.5rem;
+      background-color: #fff;
+    }
+    &:hover,
+    &:active {
+      color: $color-green-light;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+      transform: rotate(5deg) scale(1.2);
+      z-index: 3;
+    }
+    @include respond(tab-port) {
+      &:hover,
+      &:active {
+        color: #e03616;
+        box-shadow: 0 0 0 rgba($color-black, 0.4);
+        transform: scale(1);
+        z-index: 3;
+      }
+    }
+  }
+}

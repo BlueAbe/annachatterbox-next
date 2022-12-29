@@ -1,0 +1,107 @@
+.post-intro {
+  margin-top: 10rem;
+  @include respond(phone) {
+    margin-top: 5rem;
+  }
+  a {
+    text-decoration: none;
+  }
+  hr {
+    border-top: 1px solid #e03616;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    flex-grow: 1;
+    padding-right: 5rem;
+    @include respond(phone) {
+      padding-right: 0rem;
+    }
+    h2 {
+      color: #e03616;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      @include respond(phone) {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  &__catid {
+    white-space: nowrap;
+  }
+  &__level-button {
+    font-size: 2.2rem;
+    color: #fff;
+    padding: 0.2rem 0.8rem;
+    font-family: "Amiri";
+    line-height: 1.5;
+    font-weight: 600;
+    cursor: auto;
+    align-self: center;
+    margin-left: 1rem;
+    @include respond(phone) {
+      transform: rotate(370deg);
+      font-size: 2.5rem;
+    }
+  }
+  &__level-button--easy {
+    background-color: green;
+  }
+  &__level-button--easy::before {
+    content: "EASY";
+  }
+  &__level-button--medium {
+    background-color: blue;
+  }
+  &__level-button--medium::before {
+    content: "MEDIUM";
+  }
+  &__level-button--hard {
+    background-color: #ff5b00;
+  }
+  &__level-button--hard::before {
+    content: "HARD";
+  }
+  &__level-button--master {
+    background-color: red;
+  }
+  &__level-button--master::before {
+    content: "MASTER";
+  }
+  &__level-button--none {
+    display: none;
+  }
+  &__dsc {
+    display: flex;
+    margin: 2rem 0;
+    &__paragraph {
+      margin-left: 4rem;
+    }
+  }
+  &__date {
+    font-size: 2.2rem;
+    display: inline-block;
+    color: #e03616;
+    border: 1px solid;
+    padding: 0.5rem;
+    white-space: nowrap;
+    @include respond(phone) {
+      display: none !important;
+    }
+  }
+  &__img {
+    flex-shrink: 0;
+    @include respond(phone) {
+      display: none;
+    }
+  }
+  &__paragraph {
+    margin-left: 4rem;
+  }
+}

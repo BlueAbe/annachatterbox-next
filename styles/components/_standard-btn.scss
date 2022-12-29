@@ -1,0 +1,56 @@
+.standard-btn {
+  position: relative;
+  transition: all 0.5s;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  display: inline-block;
+  padding: 0.8rem;
+  margin-top: 2rem;
+  span {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+  }
+}
+.standard-btn--newsletter {
+  border: none;
+  @include respond(tab-port) {
+    width: 50%;
+    margin: 2rem auto;
+  }
+}
+.standard-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(224, 54, 22, 1);
+  transition: all 0.3s;
+}
+.standard-btn:hover::before {
+  opacity: 0;
+  transform: scale(0.5, 0.5);
+}
+.standard-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(224, 54, 22, 1);
+  transform: scale(1.2, 1.2);
+}
+.standard-btn:hover::after {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+.standard-btn:hover span {
+  color: #e03616;
+}
